@@ -12,6 +12,8 @@ const currentDate = (state = new Date(), action) => {
     case 'NEXT_MONTH':
       d.setMonth(currentMonth + 1)
       return new Date(d)
+    case 'SELECT_DATE':
+      return action.date
     default:
       return state
   }

@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {CalendarDates} from 'CalendarDates'
+import CalendarDates from 'CalendarDates'
 
 let CalendarDatesContainer = ({currentDate}) => {
   var d = new Date(currentDate)
@@ -45,7 +45,7 @@ let CalendarDatesContainer = ({currentDate}) => {
   }
 
   return (
-    <CalendarDates todayDate={new Date().toLocaleDateString()} dates={dates} />
+    <CalendarDates dates={dates} />
   )
 }
 

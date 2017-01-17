@@ -8,3 +8,8 @@ export const prevMonth = () => ({
 export const nextMonth = () => ({
   type: 'NEXT_MONTH'
 })
+
+export const selectDate = date => ({
+  type: 'SELECT_DATE',
+  date
+})

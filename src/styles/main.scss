@@ -10,6 +10,10 @@ ul {
   display: flex;
   list-style-type: none;
   padding: 0;
+
+  li {
+    cursor: pointer;
+  }
 }
 
 .month {
@@ -21,6 +25,11 @@ ul {
 
   li {
     font-size: 1rem;
+    padding: 20px;
+  }
+
+  li:nth-child(2) {
+    cursor: default;
   }
 }
 
@@ -36,6 +45,7 @@ ul {
 }
 
 .weekdays {
+  cursor: default;
   margin-top: 1.5rem;
 
   li {
@@ -46,6 +56,5 @@ ul {
 }
 
 .dates li {
-  color: #ccc;
   padding: 1.25rem 0;
 }
