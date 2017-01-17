@@ -1,7 +1,7 @@
 import React from 'react'
-import {CalendarMonth} from 'CalendarMonth'
+import CalendarMonth from 'CalendarMonth'
 import {CalendarWeekdays} from 'CalendarWeekdays'
-import {CalendarDatesContainer} from 'CalendarDatesContainer'
+import CalendarDatesContainer from 'CalendarDatesContainer'
 
 export class Calendar extends React.Component {
   constructor (props) {
@@ -9,7 +9,7 @@ export class Calendar extends React.Component {
     var d = new Date()
     this.state = {
       currentMonth: d.getMonth(),
-      currentDate: d.getDate(),
+      // currentDate: d.getDate(),
       currentYear: d.getFullYear()
     }
   }

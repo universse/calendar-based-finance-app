@@ -1,13 +1,14 @@
 import React from 'react'
 
-export let CalendarDates = ({date, dates}) =>
+export let CalendarDates = ({todayDate, dates}) =>
   <ul className='dates'>
     {dates.map(d => {
-      if (d.date === date) {
-        return <li style={{color: '#d32f2f', fontWeight: 700}}>{d.date}</li>
+      var date = d.date.getDate()
+      if (d.date.toLocaleDateString() === todayDate) {
+        return <li style={{color: '#d32f2f', fontWeight: 700}}>{date}</li>
       } else if (d.current) {
-        return <li style={{color: '#444'}}>{d.date}</li>
+        return <li style={{color: '#444'}}>{date}</li>
       }
-      return <li>{d.date}</li>
+      return <li>{date}</li>
     })}
   </ul>
