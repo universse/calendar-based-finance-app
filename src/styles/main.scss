@@ -1,0 +1,43 @@
+@import 'base/variables';
+@import '~normalize.css/normalize';
+
+main {
+  margin: 1rem auto;
+  width: 90%;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.month li {
+  font-size: 1rem;
+}
+
+.weekdays,
+.dates {
+  flex-wrap: wrap;
+  margin: 0;
+
+  li {
+    text-align: center;
+    width: calc(100% / 7);
+  }
+}
+
+.weekdays {
+  margin-top: 1.5rem;
+
+  li {
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+.dates li {
+  color: #ccc;
+  padding: 1.25rem 0;
+}
