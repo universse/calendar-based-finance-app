@@ -1,8 +1,8 @@
 import React from 'react'
-import {AppNav} from 'AppNav'
+// import {AppNav} from 'AppNav'
 
 export let AppLayout = ({children}) =>
   <div>
-    <AppNav />
+    {/* <AppNav /> */}
     {children}
   </div>

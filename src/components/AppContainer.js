@@ -3,14 +3,16 @@ import {Provider} from 'react-redux'
 import {Route, Router, IndexRoute} from 'react-router'
 
 import {AppLayout} from 'AppLayout'
-import {Calendar} from 'Calendar'
+import {App} from 'App'
+import {TransactionNew} from 'TransactionNew'
 
 export let AppContainer = ({store, history}) =>
   <Provider store={store}>
     <Router history={history}>
       <Route path='/' components={AppLayout}>
-        <IndexRoute component={Calendar} />
-        <Route path='calendar' component={Calendar} />
+        <IndexRoute component={App} />
+        <Route path='app' component={App} />
+        <Route path='add' component={TransactionNew} />
       </Route>
     </Router>
   </Provider>

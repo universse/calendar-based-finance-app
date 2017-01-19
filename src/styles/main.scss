@@ -1,60 +1,40 @@
 @import 'base/variables';
+
 @import '~normalize.css/normalize';
+@import '~material-design-lite/material.min.css';
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+@import 'components/AppNav';
+@import 'components/Calendar';
+@import 'components/TransactionNew';
+
+body {
+  background: $light-gray-background;
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
+  cursor: default;
+}
 
 main {
-  margin: 1rem auto;
-  width: 90%;
+  width: 100%;
 }
 
 ul {
   display: flex;
   list-style-type: none;
+  margin: 0 auto;
   padding: 0;
-
-  li {
-    cursor: pointer;
-  }
 }
 
-.month {
-  align-items: center;
-  height: 2rem;
-  justify-content: space-between;
-  margin: 2rem auto;
-  width: 90%;
-
-  li {
-    font-size: 1rem;
-    padding: 20px;
-  }
-
-  li:nth-child(2) {
-    cursor: default;
-  }
+button,
+i,
+li {
+  cursor: pointer;
 }
 
-.weekdays,
-.dates {
-  flex-wrap: wrap;
-  margin: 0;
-
-  li {
-    text-align: center;
-    width: calc(100% / 7);
-  }
-}
-
-.weekdays {
-  cursor: default;
-  margin-top: 1.5rem;
-
-  li {
-    font-size: .8rem;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-}
-
-.dates li {
-  padding: 1.25rem 0;
-}
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }

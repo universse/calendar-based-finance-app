@@ -1,10 +1,10 @@
 import React from 'react'
 
 export let CalendarWeekdays = props => {
-  let weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+  let weekdays = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
   return (
     <ul className='weekdays'>
-      {weekdays.map(weekday => <li key={weekday}>{weekday}</li>)}
+      {weekdays.map((weekday, i) => <li key={i}>{weekday}</li>)}
     </ul>
   )
 }

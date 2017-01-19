@@ -9,6 +9,7 @@ import {AppContainer} from 'AppContainer'
 import configureStore from 'store'
 
 require('applicationStyle')
+require('material-design-lite/material.min.js')
 
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)

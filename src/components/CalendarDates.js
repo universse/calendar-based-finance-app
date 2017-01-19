@@ -1,21 +1,42 @@
 import React from 'react'
 import {connect} from 'react-redux'
+
 import {selectDate} from 'actions'
 
-let CalendarDates = ({dates, currentDate, dispatch}) =>
-  <ul className='dates'>
-    {dates.map(d => {
-      var date = d.date
+class CalendarDates extends React.Component {
+  constructor (props) {
+    super(props)
+    this._setCurrentDate = this._setCurrentDate.bind(this)
+  }
 
-      var todayStyle = date.toLocaleDateString() === new Date().toLocaleDateString() && {color: '#d32f2f', fontWeight: 700}
-      var selectedDateStyle = date.toLocaleDateString() === currentDate.toLocaleDateString() && {color: '#111', fontWeight: 700}
-      var currentMonthStyle = d.current && {color: '#464646'}
+  _setCurrentDate (e) {
+    let ul = e.target.parentElement
+    let i = Array.prototype.indexOf.call(ul.children, e.target)
 
-      var style = todayStyle || selectedDateStyle || currentMonthStyle || {color: '#ccc'}
-      console.log(style)
-      return <li key={date} onClick={() => dispatch(selectDate(date))} style={style}>{date.getDate()}</li>
-    })}
-  </ul>
+    let {dates, dispatch} = this.props
+    dispatch(selectDate(dates[i].date))
+  }
+
+  render () {
+    let {dates, currentDate} = this.props
+
+    return (
+      <ul className='dates' onClick={this._setCurrentDate}>
+        {dates.map(d => {
+          var date = d.date
+
+          var todayStyle = date.toLocaleDateString() === new Date().toLocaleDateString() && {color: '#F54235', fontWeight: 700}
+          var currentMonthStyle = d.current && {color: '#000', opacity: 0.55}
+          var selectedDateStyle = date.toLocaleDateString() === currentDate.toLocaleDateString() && {background: '#f1f1f8', fontWeight: 700, opacity: 0.95}
+
+          var style = todayStyle || currentMonthStyle || {color: '#000', opacity: 0.2}
+          style = Object.assign(style, selectedDateStyle)
+          return <li key={date} style={style}>{date.getDate()}</li>
+        })}
+      </ul>
+    )
+  }
+}
 
 export default connect(
   state => ({
