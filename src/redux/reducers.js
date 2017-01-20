@@ -26,8 +26,35 @@ const currentDate = (state = new Date(), action) => {
   }
 }
 
+const newTransactionValue = (state = '0', action) => {
+  switch (action.type) {
+    case 'INPUT_TRANSACTION':
+      let value = action.value
+      let dotPosition = state.indexOf('.')
+
+      if (value.length !== 1) {
+        return state.length === 1 ? '0' : state.slice(0, -1)
+      } else if (state === '0' && /[1-9]/.test(value)) {
+        return value
+      } else if (state === '0' && value === '0') {
+        return state
+      } else if (value === '.') {
+        return dotPosition === -1 ? state + value : state
+      } else if (dotPosition > -1 && state.slice(dotPosition).length > 2) {
+        return state
+      } else {
+        return state + action.value
+      }
+    case 'CLEAR_TRANSACTION_INPUT':
+      return '0'
+    default:
+      return state
+  }
+}
+
 const reducer = combineReducers({
   currentDate,
+  newTransactionValue,
   routing: routerReducer
 })
 

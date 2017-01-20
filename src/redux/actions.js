@@ -13,3 +13,12 @@ export const selectDate = date => ({
   type: 'SELECT_DATE',
   date
 })
+
+export const transactionInput = value => ({
+  type: 'INPUT_TRANSACTION',
+  value
+})
+
+export const transactionClearInput = () => ({
+  type: 'CLEAR_TRANSACTION_INPUT'
+})

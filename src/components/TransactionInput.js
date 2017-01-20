@@ -1,21 +1,15 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-export default class TransactionInput extends React.Component {
-  constructor (props) {
-    super(props)
-    this._setTransactionValue = this._setTransactionValue.bind(this)
-  }
+import {transactionInput} from 'actions'
 
-  _setTransactionValue (e) {
-
-  }
-
-  render () {
-    let buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', <i className='material-icons' style={{position: 'relative', top: '3px'}}>backspace</i>]
-    return (
-      <div className='transaction-input'>
-        {buttons.map((button, i) => <button key={i}>{button}</button>)}
-      </div>
-    )
-  }
+let TransactionInput = ({dispatch}) => {
+  let buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', <i className='material-icons' style={{position: 'relative', top: '3px'}}>backspace</i>]
+  return (
+    <div className='transaction-input' onClick={e => { dispatch(transactionInput(e.target.innerHTML)) }}>
+      {buttons.map((button, i) => <button key={i}>{button}</button>)}
+    </div>
+  )
 }
+
+export default connect()(TransactionInput)

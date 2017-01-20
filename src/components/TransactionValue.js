@@ -1,4 +1,11 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-export let TransactionValue = props =>
-  <p className='value'>$1000</p>
+let TransactionValue = ({newTransactionValue}) =>
+  <p className='value'>${newTransactionValue}</p>
+
+export default connect(
+  state => ({
+    newTransactionValue: state.newTransactionValue
+  })
+)(TransactionValue)

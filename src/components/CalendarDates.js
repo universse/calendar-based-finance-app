@@ -25,7 +25,7 @@ class CalendarDates extends React.Component {
         {dates.map(d => {
           var date = d.date
 
-          var todayStyle = date.toLocaleDateString() === new Date().toLocaleDateString() && {color: '#F54235', fontWeight: 700}
+          var todayStyle = date.toLocaleDateString() === new Date().toLocaleDateString() && {color: '#FF5252', fontWeight: 700}
           var currentMonthStyle = d.current && {color: '#000', opacity: 0.55}
           var selectedDateStyle = date.toLocaleDateString() === currentDate.toLocaleDateString() && {background: '#f1f1f8', fontWeight: 700, opacity: 0.95}
 
