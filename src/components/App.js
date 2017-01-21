@@ -1,12 +1,12 @@
 import React from 'react'
 
 import {Calendar} from 'Calendar'
-import {Transactions} from 'Transactions'
+import {Transaction} from 'Transaction'
 import {TransactionAdd} from 'TransactionAdd'
 
 export let App = props =>
   <main>
     <Calendar />
-    <Transactions />
+    <Transaction />
     <TransactionAdd />
   </main>

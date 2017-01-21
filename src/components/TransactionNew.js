@@ -1,14 +1,14 @@
 import React from 'react'
 
 import TransactionNewTopbar from 'TransactionNewTopbar'
-import TransactionValue from 'TransactionValue'
-import {TransactionCategories} from 'TransactionCategories'
-import TransactionInput from 'TransactionInput'
+import TransactionNewValue from 'TransactionNewValue'
+import TransactionNewCategories from 'TransactionNewCategories'
+import TransactionNewInput from 'TransactionNewInput'
 
 export let TransactionNew = props =>
   <div className='transaction-new'>
     <TransactionNewTopbar />
-    <TransactionValue />
-    <TransactionCategories />
-    <TransactionInput />
+    <TransactionNewValue />
+    <TransactionNewCategories />
+    <TransactionNewInput />
   </div>

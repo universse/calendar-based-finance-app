@@ -18,20 +18,22 @@ class CalendarDates extends React.Component {
   }
 
   render () {
-    let {dates, currentDate} = this.props
+    let {dates, currentDateString} = this.props
 
     return (
       <ul className='dates' onClick={this._setCurrentDate}>
         {dates.map(d => {
           var date = d.date
+          var dateString = date.toLocaleDateString()
 
-          var todayStyle = date.toLocaleDateString() === new Date().toLocaleDateString() && {color: '#FF5252', fontWeight: 700}
+          var todayStyle = dateString === new Date().toLocaleDateString() && {color: '#FF5252', fontWeight: 700}
           var currentMonthStyle = d.current && {color: '#000', opacity: 0.55}
-          var selectedDateStyle = date.toLocaleDateString() === currentDate.toLocaleDateString() && {background: '#f1f1f8', fontWeight: 700, opacity: 0.95}
+          var selectedDateStyle = dateString === currentDateString && {background: '#f1f1f8', fontWeight: 700, opacity: 0.95}
 
           var style = todayStyle || currentMonthStyle || {color: '#000', opacity: 0.2}
           style = Object.assign(style, selectedDateStyle)
-          return <li key={date} style={style}>{date.getDate()}</li>
+
+          return <li key={dateString} style={style}>{date.getDate()}</li>
         })}
       </ul>
     )
@@ -40,6 +42,6 @@ class CalendarDates extends React.Component {
 
 export default connect(
   state => ({
-    currentDate: state.currentDate
+    currentDateString: state.currentDate.toLocaleDateString()
   })
 )(CalendarDates)

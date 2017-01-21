@@ -26,9 +26,29 @@ const currentDate = (state = new Date(), action) => {
   }
 }
 
+const newTransactionCategory = (state = '', action) => {
+  switch (action.type) {
+    case 'INPUT_CATEGORY':
+      return action.category
+    case 'CLEAR_CATEGORY':
+      return ''
+    default:
+      return state
+  }
+}
+
+const newTransactionNote = (state = '', action) => {
+  switch (action.type) {
+    case 'CLEAR_NOTE':
+      return ''
+    default:
+      return state
+  }
+}
+
 const newTransactionValue = (state = '0', action) => {
   switch (action.type) {
-    case 'INPUT_TRANSACTION':
+    case 'INPUT_VALUE':
       let value = action.value
       let dotPosition = state.indexOf('.')
 
@@ -45,8 +65,29 @@ const newTransactionValue = (state = '0', action) => {
       } else {
         return state + action.value
       }
-    case 'CLEAR_TRANSACTION_INPUT':
+    case 'CLEAR_VALUE':
       return '0'
+    default:
+      return state
+  }
+}
+
+const transactionList = (state = {}, action) => {
+  switch (action.type) {
+    case 'ADD_TRANSACTION':
+      let date = action.date
+      let transaction = action.transaction
+      let dateList = state[date] || []
+      dateList = [
+        ...dateList,
+        transaction
+      ]
+
+      let dateListObj = {}
+      dateListObj[date] = dateList
+
+      return Object.assign({}, state, dateListObj)
+
     default:
       return state
   }
@@ -54,7 +95,10 @@ const newTransactionValue = (state = '0', action) => {
 
 const reducer = combineReducers({
   currentDate,
+  newTransactionCategory,
+  newTransactionNote,
   newTransactionValue,
+  transactionList,
   routing: routerReducer
 })
 
