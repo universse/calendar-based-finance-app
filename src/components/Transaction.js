@@ -1,8 +1,8 @@
 import React from 'react'
 
-import {TransactionListContainer} from 'TransactionListContainer'
-
-export let Transaction = props =>
-  <div>
-    <TransactionListContainer />
-  </div>
+export let Transaction = ({category, note, value}) =>
+  <li>
+    <i className='material-icons md-36'>{category}</i>
+    <span className='note'>Housing</span>
+    <span className='value'>${value}</span>
+  </li>

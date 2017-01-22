@@ -1,5 +1,5 @@
 // import axios from 'axios'
-// import firebase, {firebaseRef, githubProvider} from 'firebase.main'
+import firebase, {firebaseRef, githubProvider} from 'firebase.main'
 import {push} from 'react-router-redux'
 
 export const prevMonth = () => ({
@@ -56,7 +56,37 @@ export const transactionClear = () => (dispatch) => {
 }
 
 export const transactionStartAdding = transaction => (dispatch, getState) => {
-  let date = getState().currentDate.toLocaleDateString()
-  dispatch(transactionAdd(transaction, date))
-  dispatch(transactionClear())
+  let uid = getState().user
+  let date = getState().currentDate.toDateString()
+  let transactionRef = firebaseRef.child(uid + '/' + date).push(transaction)
+
+  transactionRef.then(() => {
+    dispatch(transactionAdd({id: transactionRef.key, ...transaction}, date))
+    dispatch(transactionClear())
+  })
 }
+
+export const transactionsFetch = () => (dispatch, getState) => {
+  let uid = getState().user
+  let date = getState().currentDate.toDateString()
+  firebaseRef.child(uid).once('value').then(snapshot => {
+    let savedDailyList = snapshot.val()[date] || {}
+    let formattedList = Object.keys(savedDailyList).map(id => ({id, ...savedDailyList[id]}))
+    dispatch(transactionAdd(formattedList, date))
+  })
+}
+
+export const logIn = uid => ({
+  type: 'LOG_IN',
+  uid
+})
+
+export const startLogin = () => (dispatch, getState) =>
+  firebase.auth().signInWithPopup(githubProvider)
+
+export const logOut = () => ({
+  type: 'LOG_OUT'
+})
+
+export const startLogout = () => (dispatch, getState) =>
+  firebase.auth().signOut()

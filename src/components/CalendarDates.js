@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {selectDate} from 'actions'
+import {selectDate, transactionsFetch} from 'actions'
 
 class CalendarDates extends React.Component {
   constructor (props) {
@@ -15,6 +15,7 @@ class CalendarDates extends React.Component {
 
     let {dates, dispatch} = this.props
     dispatch(selectDate(dates[i].date))
+    dispatch(transactionsFetch())
   }
 
   render () {

@@ -1,0 +1,30 @@
+.transactions {
+
+  li {
+    align-items: center;
+    border-bottom: 1px solid $light-gray-border;
+    display: flex;
+    height: 60px;
+    width: 100%;
+
+    span {
+      font-size: 18px;
+      line-height: 36px;
+    }
+
+    i {
+      flex-basis: 25%;
+      text-align: center;
+    }
+
+    .note {
+      flex-basis: 55%;
+      text-align: left;
+    }
+
+    .value {
+      flex-basis: 20%;
+      text-align: right;
+    }
+  }
+}

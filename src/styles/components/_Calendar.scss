@@ -37,6 +37,10 @@
   }
 }
 
-.dates li {
-  padding: 1.25rem 0;
+.dates {
+  border-bottom: 1px solid $light-gray-border;
+
+  li {
+    padding: 1.25rem 0;
+  }
 }

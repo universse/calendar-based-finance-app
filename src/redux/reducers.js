@@ -31,6 +31,7 @@ const newTransactionCategory = (state = '', action) => {
     case 'INPUT_CATEGORY':
       return action.category
     case 'CLEAR_CATEGORY':
+    case 'LOG_OUT':
       return ''
     default:
       return state
@@ -40,6 +41,7 @@ const newTransactionCategory = (state = '', action) => {
 const newTransactionNote = (state = '', action) => {
   switch (action.type) {
     case 'CLEAR_NOTE':
+    case 'LOG_OUT':
       return ''
     default:
       return state
@@ -66,6 +68,7 @@ const newTransactionValue = (state = '0', action) => {
         return state + action.value
       }
     case 'CLEAR_VALUE':
+    case 'LOG_OUT':
       return '0'
     default:
       return state
@@ -78,16 +81,25 @@ const transactionList = (state = {}, action) => {
       let date = action.date
       let transaction = action.transaction
       let dateList = state[date] || []
-      dateList = [
-        ...dateList,
-        transaction
-      ]
+      dateList = dateList.concat(transaction)
 
       let dateListObj = {}
       dateListObj[date] = dateList
 
       return Object.assign({}, state, dateListObj)
+    case 'LOG_OUT':
+      return {}
+    default:
+      return state
+  }
+}
 
+const user = (state = '', action) => {
+  switch (action.type) {
+    case 'LOG_IN':
+      return action.uid
+    case 'LOG_OUT':
+      return ''
     default:
       return state
   }
@@ -99,7 +111,8 @@ const reducer = combineReducers({
   newTransactionNote,
   newTransactionValue,
   transactionList,
-  routing: routerReducer
+  routing: routerReducer,
+  user
 })
 
 export default reducer
