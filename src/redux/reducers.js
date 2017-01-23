@@ -13,14 +13,27 @@ const currentDate = (state = new Date(), action) => {
         d.setMonth(currentMonth - 1)
       }
       return new Date(d)
+
     case 'NEXT_MONTH':
       d.setMonth(currentMonth + 1)
       if (currentDate === 31 && currentMonth !== 6) {
         d.setDate(0)
       }
       return new Date(d)
+
     case 'SELECT_DATE':
       return action.date
+
+    default:
+      return state
+  }
+}
+
+const transactionIdEdit = (state = false, action) => {
+  switch (action.type) {
+    case 'SWITCH_EDIT_STATE':
+      return action.id
+
     default:
       return state
   }
@@ -30,9 +43,11 @@ const newTransactionCategory = (state = '', action) => {
   switch (action.type) {
     case 'INPUT_CATEGORY':
       return action.category
+
     case 'CLEAR_CATEGORY':
     case 'LOG_OUT':
       return ''
+
     default:
       return state
   }
@@ -43,6 +58,7 @@ const newTransactionNote = (state = '', action) => {
     case 'CLEAR_NOTE':
     case 'LOG_OUT':
       return ''
+
     default:
       return state
   }
@@ -54,7 +70,9 @@ const newTransactionValue = (state = '0', action) => {
       let value = action.value
       let dotPosition = state.indexOf('.')
 
-      if (value.length !== 1) {
+      if (value.length !== 1 && /[1-9]{2,}/.test(value)) {
+        return value
+      } else if (value.length !== 1) {
         return state.length === 1 ? '0' : state.slice(0, -1)
       } else if (state === '0' && /[1-9]/.test(value)) {
         return value
@@ -67,28 +85,43 @@ const newTransactionValue = (state = '0', action) => {
       } else {
         return state + action.value
       }
+
     case 'CLEAR_VALUE':
     case 'LOG_OUT':
       return '0'
+
     default:
       return state
   }
 }
 
 const transactionList = (state = {}, action) => {
+  let date = action.date
+  let dailyListObj = {}
+
   switch (action.type) {
     case 'ADD_TRANSACTION':
-      let date = action.date
       let transaction = action.transaction
-      let dateList = state[date] || []
-      dateList = dateList.concat(transaction)
+      let dailyList = state[date] || []
+      dailyList = dailyList.concat(transaction)
 
-      let dateListObj = {}
-      dateListObj[date] = dateList
+      dailyListObj[date] = dailyList
+      return Object.assign({}, state, dailyListObj)
 
-      return Object.assign({}, state, dateListObj)
+    case 'EDIT_TRANSACTION':
+      let updatedDailyList = state[date].map(transaction => {
+        if (transaction.id === action.transaction.id) {
+          return action.transaction
+        }
+        return transaction
+      })
+
+      dailyListObj[date] = updatedDailyList
+      return Object.assign({}, state, dailyListObj)
+
     case 'LOG_OUT':
       return {}
+
     default:
       return state
   }
@@ -98,8 +131,10 @@ const user = (state = '', action) => {
   switch (action.type) {
     case 'LOG_IN':
       return action.uid
+
     case 'LOG_OUT':
       return ''
+
     default:
       return state
   }
@@ -107,6 +142,7 @@ const user = (state = '', action) => {
 
 const reducer = combineReducers({
   currentDate,
+  transactionIdEdit,
   newTransactionCategory,
   newTransactionNote,
   newTransactionValue,

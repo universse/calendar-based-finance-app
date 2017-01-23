@@ -15,6 +15,24 @@ export const selectDate = date => ({
   date
 })
 
+const editStateSet = id => ({
+  type: 'SWITCH_EDIT_STATE',
+  id
+})
+
+export const editStateStartSetting = id => (dispatch, getState) => {
+  dispatch(editStateSet(id))
+  let date = getState().currentDate.toDateString()
+  let transactionList = getState().transactionList
+
+  let currentTransaction = transactionList[date].find(transaction => transaction.id === id)
+  let {category, note, value} = currentTransaction
+
+  dispatch(transactionCategoryInput(category))
+  dispatch(transactionNoteInput(note))
+  dispatch(transactionValueInput(value))
+}
+
 export const transactionCategoryInput = category => ({
   type: 'INPUT_CATEGORY',
   category
@@ -48,10 +66,17 @@ const transactionAdd = (transaction, date) => ({
   date
 })
 
+const transactionEdit = (transaction, date) => ({
+  type: 'EDIT_TRANSACTION',
+  transaction,
+  date
+})
+
 export const transactionClear = () => (dispatch) => {
   dispatch(transactionCategoryClear())
   dispatch(transactionNoteClear())
   dispatch(transactionValueClear())
+  dispatch(editStateSet(false))
   dispatch(push('/app'))
 }
 
@@ -60,8 +85,21 @@ export const transactionStartAdding = transaction => (dispatch, getState) => {
   let date = getState().currentDate.toDateString()
   let transactionRef = firebaseRef.child(uid + '/' + date).push(transaction)
 
-  transactionRef.then(() => {
+  return transactionRef.then(() => {
     dispatch(transactionAdd({id: transactionRef.key, ...transaction}, date))
+    dispatch(transactionClear())
+  })
+}
+
+export const transactionStartEditting = transaction => (dispatch, getState) => {
+  let uid = getState().user
+  let date = getState().currentDate.toDateString()
+  let id = getState().transactionIdEdit
+
+  let transactionRef = firebaseRef.child(`${uid}/${date}/${id}`)
+
+  return transactionRef.update({...transaction}).then(() => {
+    dispatch(transactionEdit({id, ...transaction}, date))
     dispatch(transactionClear())
   })
 }
@@ -69,10 +107,16 @@ export const transactionStartAdding = transaction => (dispatch, getState) => {
 export const transactionsFetch = () => (dispatch, getState) => {
   let uid = getState().user
   let date = getState().currentDate.toDateString()
+  let transactionList = getState().transactionList
+
   firebaseRef.child(uid).once('value').then(snapshot => {
-    let savedDailyList = snapshot.val()[date] || {}
-    let formattedList = Object.keys(savedDailyList).map(id => ({id, ...savedDailyList[id]}))
-    dispatch(transactionAdd(formattedList, date))
+    if (snapshot.val() && snapshot.val().hasOwnProperty(date)) {
+      let savedDailyList = snapshot.val()[date]
+      let formattedList = Object.keys(savedDailyList).map(id => ({id, ...savedDailyList[id]}))
+      if (!transactionList[date]) {
+        dispatch(transactionAdd(formattedList, date))
+      }
+    }
   })
 }
 

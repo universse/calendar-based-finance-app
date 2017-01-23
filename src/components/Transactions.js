@@ -1,14 +1,32 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {push} from 'react-router-redux'
 
-import {Transaction} from 'Transaction'
+import Transaction from 'Transaction'
 
-let Transactions = ({transactions = []}) =>
-  <div>
-    <ul className='transactions'>
-      {transactions.map(({id, ...others}) => <Transaction key={id} {...others} />)}
-    </ul>
-  </div>
+class Transactions extends React.Component {
+  constructor (props) {
+    super(props)
+    this._editTransaction = this._editTransaction.bind(this)
+  }
+
+  _editTransaction () {
+    let {dispatch} = this.props
+    dispatch(push('/edit'))
+  }
+
+  render () {
+    let {transactions = []} = this.props
+
+    return (
+      <div>
+        <ul className='transactions' onClick={this._editTransaction}>
+          {transactions.map(transaction => <Transaction key={transaction.id} {...transaction} />)}
+        </ul>
+      </div>
+    )
+  }
+}
 
 export default connect(
   state => ({

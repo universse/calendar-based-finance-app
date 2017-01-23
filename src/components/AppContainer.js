@@ -14,6 +14,7 @@ export let AppContainer = ({store, history}) =>
         <IndexRoute component={Login} />
         <Route path='app' component={App} />
         <Route path='add' component={TransactionNew} />
+        <Route path='edit' component={TransactionNew} />
       </Route>
     </Router>
   </Provider>
