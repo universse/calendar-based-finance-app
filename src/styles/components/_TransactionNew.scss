@@ -1,3 +1,7 @@
+p {
+  margin: 0;
+}
+
 .transaction-new > * {
   border-top: 1px solid $light-gray-border;
 }
@@ -10,7 +14,6 @@
 
   p {
     font-size: 18px;
-    margin: 0;
   }
 
   i {
@@ -20,7 +23,6 @@
 
 .value {
   font-size: 2rem;
-  margin: 0;
   padding: 16px;
   padding-left: 0;
   text-align: right;
@@ -30,21 +32,28 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  padding: 16px 0;
+  padding: 1rem 0;
 
   p {
+    font-size: .9rem;
+    margin-bottom: .65rem;
     padding-left: 16px;
     width: 100%;
   }
 
   .transaction-categories-icons {
     align-items: center;
+    display: flex;
     flex-wrap: wrap;
+    padding: 0 12px;
     width: 100%;
 
-    i {
-      padding: 8px 0;
-      text-align: center;
+    span {
+      display: flex;
+      justify-content: center;
+      margin: .6rem 0;
+      padding: .75rem 0;
+      position: relative;
       width: 20%;
     }
   }

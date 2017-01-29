@@ -8,9 +8,9 @@ let TransactionNewTopbar = ({idToEdit, category, note, value, dispatch}) => {
 
   return (
     <div className='topbar'>
-      <i className='material-icons' onClick={() => dispatch(transactionClear())}>clear</i>
+      <i className='icon-close' onClick={() => dispatch(transactionClear())} />
       <p>{idToEdit ? 'Edit' : 'New'} Transaction</p>
-      <i className='material-icons' onClick={() => idToEdit ? dispatch(transactionStartEditting(transaction)) : dispatch(transactionStartAdding(transaction))}>done</i>
+      <i className='icon-check' onClick={() => idToEdit ? dispatch(transactionStartEditting(transaction)) : dispatch(transactionStartAdding(transaction))} />
     </div>
   )
 }

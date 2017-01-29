@@ -16,7 +16,7 @@ const currentDate = (state = new Date(), action) => {
 
     case 'NEXT_MONTH':
       d.setMonth(currentMonth + 1)
-      if (currentDate === 31 && currentMonth !== 6) {
+      if ((currentDate === 31 && currentMonth !== 6 && currentMonth !== 11) || (currentDate > 28 && currentMonth === 0)) {
         d.setDate(0)
       }
       return new Date(d)

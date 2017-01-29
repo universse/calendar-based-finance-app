@@ -1,7 +1,24 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
+import styled from 'styled-components'
+
 import {selectDate, transactionsFetch} from 'actions'
+
+import Ul from 'Ul'
+import Li from 'Li'
+
+const DateUl = styled(Ul)`
+  border-top: 1px solid #ddd
+  flex-wrap: wrap
+  border-bottom: 1px solid #ddd
+`
+
+const DateLi = styled(Li)`
+  text-align: center
+  width: calc(100% / 7)
+  padding: 1.25rem 0
+`
 
 class CalendarDates extends React.Component {
   constructor (props) {
@@ -10,7 +27,7 @@ class CalendarDates extends React.Component {
   }
 
   _setCurrentDate (e) {
-    let ul = e.target.parentElement
+    let ul = e.currentTarget
     let i = Array.prototype.indexOf.call(ul.children, e.target)
 
     let {dates, dispatch} = this.props
@@ -22,7 +39,7 @@ class CalendarDates extends React.Component {
     let {dates, currentDateString} = this.props
 
     return (
-      <ul className='dates' onClick={this._setCurrentDate}>
+      <DateUl onClick={this._setCurrentDate}>
         {dates.map(d => {
           var date = d.date
           var dateString = date.toLocaleDateString()
@@ -34,9 +51,9 @@ class CalendarDates extends React.Component {
           var style = todayStyle || currentMonthStyle || {color: '#000', opacity: 0.2}
           style = Object.assign(style, selectedDateStyle)
 
-          return <li key={dateString} style={style}>{date.getDate()}</li>
+          return <DateLi key={dateString} style={style}>{date.getDate()}</DateLi>
         })}
-      </ul>
+      </DateUl>
     )
   }
 }

@@ -1,7 +1,27 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import styled from 'styled-components'
 
 import {prevMonth, nextMonth} from 'actions'
+import Ul from 'Ul'
+import Li from 'Li'
+
+const MonthUl = styled(Ul)`
+  align-items: center
+  height: 64px
+  justify-content: space-between
+  padding: 0
+`
+
+const MonthLi = styled(Li)`
+  font-size: 1rem;
+  padding: 20px;
+
+  &:nth-child(2) {
+    cursor: default;
+    font-size: 18px;
+  }
+`
 
 let CalendarMonth = ({currentDate, prevMonth, nextMonth}) => {
   var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -10,11 +30,11 @@ let CalendarMonth = ({currentDate, prevMonth, nextMonth}) => {
   var year = d.getFullYear()
 
   return (
-    <ul className='month'>
-      <li onClick={prevMonth}>&#10094;</li>
-      <li>{months[month]} {year}</li>
-      <li onClick={nextMonth}>&#10095;</li>
-    </ul>
+    <MonthUl>
+      <MonthLi onClick={prevMonth}>&#10094;</MonthLi>
+      <MonthLi>{months[month]} {year}</MonthLi>
+      <MonthLi onClick={nextMonth}>&#10095;</MonthLi>
+    </MonthUl>
   )
 }
 

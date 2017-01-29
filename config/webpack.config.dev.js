@@ -54,6 +54,10 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.(eot|svg|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
+        loader: 'url'
       }
     ]
   },
@@ -67,7 +71,8 @@ module.exports = {
       './src/api',
       './src/components',
       './src/firebase',
-      './src/redux'
+      './src/redux',
+      './src/styled-components'
     ],
     alias: {
       applicationStyle: paths.mainScss

@@ -5,7 +5,7 @@ import {editStateStartSetting} from 'actions'
 
 let Transaction = ({id, category, note, value, dispatch}) =>
   <li onClick={() => dispatch(editStateStartSetting(id))}>
-    <i className='material-icons md-36'>{category}</i>
+    <i className={`fa fa-${category} fa-2x`} />
     <span className='note'>Housing</span>
     <span className='value'>${value}</span>
   </li>

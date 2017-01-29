@@ -1,4 +1,3 @@
-// import axios from 'axios'
 import firebase, {firebaseRef, githubProvider} from 'firebase.main'
 import {push} from 'react-router-redux'
 
