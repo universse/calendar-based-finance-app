@@ -1,7 +1,7 @@
 const webpack = require('webpack')
-const cssnano = require('cssnano')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 const envFile = require('node-env-file')
 const paths = require('./paths')
 
@@ -45,33 +45,60 @@ module.exports = {
         'MESSAGING_SENDER_ID': JSON.stringify(process.env.MESSAGING_SENDER_ID)
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      compressor: {
+      compress: {
+        comparisons: true,
+        conditionals: true,
+        dead_code: true,
+        evaluate: true,
+        join_vars: true,
+        if_return: true,
+        screw_ie8: true,
+        sequences: true,
+        unused: true,
         warnings: false
       },
-      comments: false,
-      unused: true,
-      mangle: true,
-      sourcemap: false,
-      beautify: false,
-      dead_code: true
+
+      output: {
+        comments: false
+      }
     }),
-    new ExtractTextPlugin('main.css', {
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new ExtractTextPlugin({
+      filename: 'main.css',
+      disable: false,
       allChunks: true
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/
     })
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!postcss!sass')
+        loader: ExtractTextPlugin.extract({
+          loader: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: paths.postcssConfig
+              }
+            },
+            {
+              loader: 'sass-loader'
+            }
+          ]
+        })
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css')
+        loader: ExtractTextPlugin.extract({loader: 'css-loader'})
       },
       {
         test: /\.jsx?$/,
@@ -83,36 +110,18 @@ module.exports = {
       },
       {
         test: /\.(eot|svg|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
-        loader: 'url'
+        loader: 'url-loader'
       }
     ]
   },
-  postcss: [
-    cssnano({
-      autoprefixer: {
-        add: true,
-        remove: true,
-        browsers: ['last 2 versions']
-      },
-      discardComments: {
-        removeAll: true
-      },
-      discardUnused: false,
-      mergeIdents: false,
-      reduceIdents: false,
-      safe: true,
-      sourcemap: true
-    })
-  ],
   resolve: {
-    root: __dirname,
-    modulesDirectories: [
+    modules: [
       'node_modules',
-      './src/api',
-      './src/components',
-      './src/firebase',
-      './src/redux',
-      './src/styled-components'
+      paths.api,
+      paths.components,
+      paths.firebase,
+      paths.redux,
+      paths.styledComponents
     ],
     alias: {
       applicationStyle: paths.mainScss

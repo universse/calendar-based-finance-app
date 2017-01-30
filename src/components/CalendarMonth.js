@@ -14,12 +14,12 @@ const MonthUl = styled(Ul)`
 `
 
 const MonthLi = styled(Li)`
-  font-size: 1rem;
-  padding: 20px;
+  font-size: 1rem
+  padding: 20px
 
-  &:nth-child(2) {
-    cursor: default;
-    font-size: 18px;
+  ;&:nth-child(2) {
+    cursor: default
+    font-size: 1.2rem
   }
 `
 

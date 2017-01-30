@@ -1,5 +1,4 @@
 const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const envFile = require('node-env-file')
@@ -33,19 +32,36 @@ module.exports = {
       }
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('main.css', {
+    new ExtractTextPlugin({
+      filename: 'main.css',
+      disable: false,
       allChunks: true
     })
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!postcss!sass')
+        loader: ExtractTextPlugin.extract({
+          loader: [
+            {
+              loader: 'css-loader'
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                config: paths.postcssConfig
+              }
+            },
+            {
+              loader: 'sass-loader'
+            }
+          ]
+        })
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css')
+        loader: ExtractTextPlugin.extract({loader: 'css-loader'})
       },
       {
         test: /\.jsx?$/,
@@ -57,22 +73,18 @@ module.exports = {
       },
       {
         test: /\.(eot|svg|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
-        loader: 'url'
+        loader: 'url-loader'
       }
     ]
   },
-  postcss () {
-    return [autoprefixer]
-  },
   resolve: {
-    root: __dirname,
-    modulesDirectories: [
+    modules: [
       'node_modules',
-      './src/api',
-      './src/components',
-      './src/firebase',
-      './src/redux',
-      './src/styled-components'
+      paths.api,
+      paths.components,
+      paths.firebase,
+      paths.redux,
+      paths.styledComponents
     ],
     alias: {
       applicationStyle: paths.mainScss
