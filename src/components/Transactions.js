@@ -3,12 +3,13 @@ import {connect} from 'react-redux'
 import {push} from 'react-router-redux'
 
 import Transaction from 'Transaction'
+import Ul from 'Ul'
 
 let Transactions = ({transactions = [], dispatch}) =>
   <div>
-    <ul className='transactions' onClick={() => dispatch(push('/edit'))}>
+    <Ul onClick={() => dispatch(push('/edit'))}>
       {transactions.map(transaction => <Transaction key={transaction.id} {...transaction} />)}
-    </ul>
+    </Ul>
   </div>
 
 export default connect(

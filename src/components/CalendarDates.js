@@ -9,9 +9,9 @@ import CalendarDate from 'CalendarDate'
 import Ul from 'Ul'
 
 const DateUl = styled(Ul)`
-  border-top: 1px solid #ddd
-  flex-wrap: wrap
-  border-bottom: 1px solid #ddd
+  border-top: 1px solid #ddd;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ddd;
 `
 
 let CalendarDates = ({dates, dispatch}) => {

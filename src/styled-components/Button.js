@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-  cursor: pointer
+  cursor: pointer;
 `
 
 export default Button

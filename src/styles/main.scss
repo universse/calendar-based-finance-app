@@ -1,13 +1,10 @@
 @import 'base/variables';
 
 @import '~normalize.css/normalize';
-@import 'icons';
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 
 @import 'components/AppNav';
-@import 'components/TransactionNew';
-@import 'components/Transactions';
 
 body {
   background: $light-gray-background;

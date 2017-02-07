@@ -8,7 +8,9 @@ import {TransactionAdd} from 'TransactionAdd'
 import Logout from 'Logout'
 
 const Main = styled.main`
-  width: 100%
+  margin: 0 auto;
+  max-width: 45rem;
+  width: 100%;
 `
 
 export let App = props =>

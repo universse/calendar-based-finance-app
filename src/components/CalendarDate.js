@@ -6,23 +6,23 @@ import styled from 'styled-components'
 import Li from 'Li'
 
 const DateLi = styled(Li)`
-  text-align: center
-  width: calc(100% / 7)
-  padding: 1.25rem 0
+  background: ${props => props.selected && '#f1f1f8'};
+  color: ${props => props.today ? '#FF5252' : '#000'};
+  font-weight: ${props => (props.today || props.selected) && 700};
+  opacity: ${props => ((props.selected || props.today) && 0.95) || (props.currentMonth && 0.55) || 0.2};
+  padding: 1.25rem 0;
+  text-align: center;
+  width: calc(100% / 7);
 `
 
 let CalendarDate = ({d, currentDateString}) => {
   var date = d.date
   var dateString = date.toLocaleDateString()
 
-  var todayStyle = dateString === new Date().toLocaleDateString() && {color: '#FF5252', fontWeight: 700}
-  var currentMonthStyle = d.current && {color: '#000', opacity: 0.55}
-  var selectedDateStyle = dateString === currentDateString && {background: '#f1f1f8', fontWeight: 700, opacity: 0.95}
-
-  var style = todayStyle || currentMonthStyle || {color: '#000', opacity: 0.2}
-  style = Object.assign(style, selectedDateStyle)
-
-  return <DateLi key={dateString} style={style}>{date.getDate()}</DateLi>
+  return <DateLi key={dateString}
+    today={dateString === new Date().toLocaleDateString()}
+    currentMonth={d.current}
+    selected={dateString === currentDateString}>{date.getDate()}</DateLi>
 }
 
 export default connect(

@@ -1,17 +1,34 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import styled from 'styled-components'
 
 import {transactionClear, transactionStartAdding, transactionStartEditting} from 'actions'
+
+const Topbar = styled.div`
+  align-items: center;
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+`
+
+const Icon = styled.i`
+  padding: 20px;
+`
+
+const Para = styled.p`
+  margin: 0;
+  font-size: 1.15rem;
+`
 
 let TransactionNewTopbar = ({idToEdit, category, note, value, dispatch}) => {
   let transaction = {category, note, value}
 
   return (
-    <div className='topbar'>
-      <i className='icon-close' onClick={() => dispatch(transactionClear())} />
-      <p>{idToEdit ? 'Edit' : 'New'} Transaction</p>
-      <i className='icon-check' onClick={() => idToEdit ? dispatch(transactionStartEditting(transaction)) : dispatch(transactionStartAdding(transaction))} />
-    </div>
+    <Topbar>
+      <Icon className='icon-close' onClick={() => dispatch(transactionClear())} />
+      <Para>{idToEdit ? 'Edit' : 'New'} Transaction</Para>
+      <Icon className='icon-check' onClick={() => idToEdit ? dispatch(transactionStartEditting(transaction)) : dispatch(transactionStartAdding(transaction))} />
+    </Topbar>
   )
 }
 

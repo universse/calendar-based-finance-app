@@ -7,19 +7,19 @@ import Ul from 'Ul'
 import Li from 'Li'
 
 const MonthUl = styled(Ul)`
-  align-items: center
-  height: 64px
-  justify-content: space-between
-  padding: 0
+  align-items: center;
+  height: 64px;
+  justify-content: space-between;
+  padding: 0;
 `
 
 const MonthLi = styled(Li)`
-  font-size: 1rem
-  padding: 20px
+  font-size: 1rem;
+  padding: 20px;
 
-  ;&:nth-child(2) {
-    cursor: default
-    font-size: 1.2rem
+  &:nth-child(2) {
+    cursor: default;
+    font-size: 1.2rem;
   }
 `
 
