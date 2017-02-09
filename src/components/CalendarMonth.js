@@ -4,18 +4,19 @@ import styled from 'styled-components'
 
 import {prevMonth, nextMonth} from 'actions'
 import Ul from 'Ul'
-import Li from 'Li'
 
 const MonthUl = styled(Ul)`
   align-items: center;
+  background: #f44336;
+  color: #fff;
   height: 64px;
   justify-content: space-between;
-  padding: 0;
 `
 
-const MonthLi = styled(Li)`
+const MonthLi = styled.li`
+  cursor: pointer;
   font-size: 1rem;
-  padding: 20px;
+  padding: 1.25em;
 
   &:nth-child(2) {
     cursor: default;

@@ -6,6 +6,8 @@ import {transactionClear, transactionStartAdding, transactionStartEditting} from
 
 const Topbar = styled.div`
   align-items: center;
+  background: #f44336;
+  color: #fff;
   display: flex;
   height: 64px;
   justify-content: space-between;

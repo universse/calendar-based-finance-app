@@ -2,21 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Ul from 'Ul'
-import Li from 'Li'
 
 const WeekdayUl = styled(Ul)`
-  border-top: 1px solid #ddd;
   flex-wrap: wrap;
-  opacity: .4;
-  padding: 1rem 0;
+  opacity: .6;
 `
 
-const WeekdayLi = styled(Li)`
-  text-align: center;
-  width: calc(100% / 7);
-  cursor: default;
+const WeekdayLi = styled.li`
   font-size: .8rem;
   font-weight: 600;
+  padding: 0.8em 0;
+  text-align: center;
+  width: calc(100% / 7);
 `
 
 export let CalendarWeekdays = props => {

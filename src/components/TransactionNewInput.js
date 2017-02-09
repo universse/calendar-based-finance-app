@@ -5,10 +5,8 @@ import styled from 'styled-components'
 import {transactionValueInput} from 'actions'
 
 const TransactionInput = styled.div`
-  bottom: 0;
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
   width: 100%;
 `
 

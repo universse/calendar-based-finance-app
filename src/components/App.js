@@ -1,22 +1,20 @@
 import React from 'react'
+import {Provider} from 'react-redux'
+import {Route, Router, IndexRoute} from 'react-router'
 
-import styled from 'styled-components'
+import Login from 'Login'
+import {AppLayout} from 'AppLayout'
+import {AppHome} from 'AppHome'
+import {TransactionNew} from 'TransactionNew'
 
-import {Calendar} from 'Calendar'
-import Transactions from 'Transactions'
-import {TransactionAdd} from 'TransactionAdd'
-import Logout from 'Logout'
-
-const Main = styled.main`
-  margin: 0 auto;
-  max-width: 45rem;
-  width: 100%;
-`
-
-export let App = props =>
-  <Main>
-    <Calendar />
-    <Transactions />
-    <TransactionAdd />
-    <Logout />
-  </Main>
+export let App = ({store, history}) =>
+  <Provider store={store}>
+    <Router history={history}>
+      <Route path='/' components={AppLayout}>
+        <IndexRoute component={Login} />
+        <Route path='app' component={AppHome} />
+        <Route path='add' component={TransactionNew} />
+        <Route path='edit' component={TransactionNew} />
+      </Route>
+    </Router>
+  </Provider>

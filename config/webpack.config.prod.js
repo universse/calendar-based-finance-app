@@ -79,8 +79,8 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          loader: [
+        use: ExtractTextPlugin.extract({
+          use: [
             {
               loader: 'css-loader'
             },
@@ -98,7 +98,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({loader: 'css-loader'})
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: paths.postcssConfig
+            }
+          }
+        ]
       },
       {
         test: /\.jsx?$/,
@@ -123,9 +136,7 @@ module.exports = {
       paths.redux,
       paths.styledComponents
     ],
-    alias: {
-      applicationStyle: paths.mainScss
-    }
+    alias: {}
   },
   output: {
     filename: 'index.js',

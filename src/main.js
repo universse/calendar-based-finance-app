@@ -2,14 +2,14 @@ import React from 'react'
 import {render} from 'react-dom'
 import {browserHistory} from 'react-router'
 import {syncHistoryWithStore, push} from 'react-router-redux'
+import {AppContainer} from 'react-hot-loader'
+import 'normalize.css'
 
-import {AppContainer} from 'AppContainer'
+import {App} from 'App'
 import {logIn, logOut, selectDate, transactionsFetch} from 'actions'
 import firebase from 'firebase.main'
 import configureStore from 'store'
-
-require('applicationStyle')
-require('material-design-lite/material.min.js')
+import './globalStyle'
 
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
@@ -27,6 +27,19 @@ firebase.auth().onAuthStateChanged(user => {
 })
 
 render(
-  <AppContainer store={store} history={history} />,
+  <AppContainer>
+    <App store={store} history={history} />
+  </AppContainer>,
   document.getElementById('root')
 )
+
+if (module.hot) {
+  module.hot.accept('App', () => {
+    render(
+      <AppContainer>
+        <App />
+      </AppContainer>,
+      document.getElementById('root')
+    )
+  })
+}

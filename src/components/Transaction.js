@@ -3,14 +3,18 @@ import {connect} from 'react-redux'
 import styled from 'styled-components'
 
 import {editStateStartSetting} from 'actions'
-import Li from 'Li'
 
-const TransactionLi = styled(Li)`
+const TransactionLi = styled.li`
   align-items: center;
-  border-bottom: 1px solid $light-gray-border;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
   display: flex;
   height: 60px;
   width: 100%;
+
+  &:last-child {
+    border-bottom: 1px solid #ccc;
+  }
 `
 
 const Icon = styled.i`
@@ -20,15 +24,16 @@ const Icon = styled.i`
 
 const Note = styled.span`
   flex-basis: 55%;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 36px;
   text-align: left;
 `
 
 const Value = styled.span`
   flex-basis: 20%;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 36px;
+  padding-right: 2em;
   text-align: right;
 `
 

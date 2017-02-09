@@ -5,6 +5,8 @@ import TransactionNewCategoryIcon from 'TransactionNewCategoryIcon'
 
 const Categories = styled.div`
   align-items: center;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #eee;
   display: flex;
   flex-wrap: wrap;
   padding: 1rem 0;

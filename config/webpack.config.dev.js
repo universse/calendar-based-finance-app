@@ -11,11 +11,13 @@ envFile(paths.devEnv)
 module.exports = {
   devtool: 'eval',
   entry: [
+    'react-hot-loader/patch',
     'webpack-dev-server/client?http://0.0.0.0:8080',
     'webpack/hot/only-dev-server',
     paths.mainJs
   ],
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'React Finance',
       inject: true,
@@ -31,7 +33,6 @@ module.exports = {
         'MESSAGING_SENDER_ID': JSON.stringify(process.env.MESSAGING_SENDER_ID)
       }
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin({
       filename: 'main.css',
       disable: false,
@@ -42,8 +43,8 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          loader: [
+        use: ExtractTextPlugin.extract({
+          use: [
             {
               loader: 'css-loader'
             },
@@ -61,7 +62,20 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({loader: 'css-loader'})
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: paths.postcssConfig
+            }
+          }
+        ]
       },
       {
         test: /\.jsx?$/,
@@ -86,9 +100,7 @@ module.exports = {
       paths.redux,
       paths.styledComponents
     ],
-    alias: {
-      applicationStyle: paths.mainScss
-    }
+    alias: {}
   },
   output: {
     filename: 'index.js',
