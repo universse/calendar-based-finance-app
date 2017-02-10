@@ -1,5 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {push} from 'react-router-redux'
+
 import styled from 'styled-components'
 
 import {editStateStartSetting} from 'actions'
@@ -9,12 +11,8 @@ const TransactionLi = styled.li`
   border-bottom: 1px solid #eee;
   cursor: pointer;
   display: flex;
-  height: 60px;
+  height: 48px;
   width: 100%;
-
-  &:last-child {
-    border-bottom: 1px solid #ccc;
-  }
 `
 
 const Icon = styled.i`
@@ -37,11 +35,19 @@ const Value = styled.span`
   text-align: right;
 `
 
-let Transaction = ({id, category, note, value, dispatch}) =>
-  <TransactionLi onClick={() => dispatch(editStateStartSetting(id))}>
-    <Icon className={`fa fa-${category} fa-2x`} />
-    <Note>Housing</Note>
-    <Value className='value'>${value}</Value>
-  </TransactionLi>
+let Transaction = ({id, category, note, value, dispatch}) => {
+  let _editTransaction = () => {
+    dispatch(editStateStartSetting(id))
+    dispatch(push('/edit'))
+  }
+
+  return (
+    <TransactionLi onClick={_editTransaction}>
+      <Icon className={`fa fa-${category} fa-2x`} />
+      <Note>Housing</Note>
+      <Value className='value'>${value}</Value>
+    </TransactionLi>
+  )
+}
 
 export default connect()(Transaction)

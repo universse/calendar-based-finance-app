@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+var ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const envFile = require('node-env-file')
 const paths = require('./paths')
@@ -22,6 +23,9 @@ module.exports = {
       title: 'React Finance',
       inject: true,
       template: paths.html
+    }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async'
     }),
     new webpack.DefinePlugin({
       'process.env': {

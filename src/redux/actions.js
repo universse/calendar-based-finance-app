@@ -1,4 +1,4 @@
-import firebase, {firebaseRef, githubProvider} from 'firebase.main'
+import firebase, {firebaseRef, githubProvider} from '../firebase'
 import {push} from 'react-router-redux'
 
 export const prevMonth = () => ({
@@ -76,7 +76,7 @@ export const transactionClear = () => (dispatch) => {
   dispatch(transactionNoteClear())
   dispatch(transactionValueClear())
   dispatch(editStateSet(false))
-  dispatch(push('/app'))
+  dispatch(push('app'))
 }
 
 export const transactionStartAdding = transaction => (dispatch, getState) => {

@@ -3,7 +3,7 @@ import {Provider} from 'react-redux'
 import {Route, Router, IndexRoute} from 'react-router'
 
 import Login from 'Login'
-import {AppLayout} from 'AppLayout'
+import AppLayout from 'AppLayout'
 import {AppHome} from 'AppHome'
 import {TransactionNew} from 'TransactionNew'
 

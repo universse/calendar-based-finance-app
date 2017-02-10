@@ -7,12 +7,16 @@ import 'normalize.css'
 
 import {App} from 'App'
 import {logIn, logOut, selectDate, transactionsFetch} from 'actions'
-import firebase from 'firebase.main'
+import firebase from './firebase'
 import configureStore from 'store'
-import './globalStyle'
+import 'globalStyle'
 
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
+
+if (!firebase.auth().currentUser) {
+  store.dispatch(push(''))
+}
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {

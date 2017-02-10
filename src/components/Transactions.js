@@ -1,16 +1,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {push} from 'react-router-redux'
 import styled from 'styled-components'
 
 import Transaction from 'Transaction'
 import Ul from 'Ul'
 
 const Wrapper = styled.div`
-  height: 200px;
+  height: 1000px;
   overflow: hidden;
-  @media screen and (min-width: 416px) {
-  }
 `
 
 const TransactionList = styled(Ul)`
@@ -19,12 +16,15 @@ const TransactionList = styled(Ul)`
   overflow-y: auto;
 `
 
-let Transactions = ({transactions = [], dispatch}) =>
-  <Wrapper>
-    <TransactionList onClick={() => dispatch(push('/edit'))}>
-      {transactions.map(transaction => <Transaction key={transaction.id} {...transaction} />)}
-    </TransactionList>
-  </Wrapper>
+let Transactions = ({transactions = [], dispatch}) => {
+  return (
+    <Wrapper>
+      <TransactionList>
+        {transactions.map(transaction => <Transaction key={transaction.id} {...transaction} />)}
+      </TransactionList>
+    </Wrapper>
+  )
+}
 
 export default connect(
   state => ({

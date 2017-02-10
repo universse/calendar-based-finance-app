@@ -4,25 +4,26 @@ import {connect} from 'react-redux'
 import styled from 'styled-components'
 
 const DateLi = styled.li`
-  color: ${props => (props.selected && '#fff') || (props.today && '#ff5252') || '#000'};
+  color: ${({selected, today}) => (selected && '#fff') || (today && '#ff5252') || '#000'};
   display: flex;
+  font-weight: ${({selected, today}) => today && !selected && 700};
   justify-content: center;
-  margin: 0.3em 0;
-  opacity: ${props => ((props.selected || props.today) && 0.95) || (props.currentMonth && 0.55) || 0.1};
+  margin: 0.4em 0;
+  opacity: ${({currentMonth, selected, today}) => ((selected || today) && 0.95) || (currentMonth && 0.55) || 0.1};
   text-align: center;
   width: calc(100% / 7);
 `
 
 const DateWrapper = styled.span`
   align-items: center;
-  background: ${props => props.selected ? '#f44336' : '#fefefe'};
+  background: ${({selected}) => selected ? '#f44336' : '#fefefe'};
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   font-size: 14px;
-  height: 3em;
+  height: 3.2em;
   justify-content: center;
-  width: 3em;
+  width: 3.2em;
 
   @media screen and (min-width: 416px) {
     font-size: 16px;

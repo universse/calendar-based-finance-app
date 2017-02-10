@@ -24,12 +24,14 @@ const Para = styled.p`
 
 let TransactionNewTopbar = ({idToEdit, category, note, value, dispatch}) => {
   let transaction = {category, note, value}
+  let _clear = () => dispatch(transactionClear())
+  let _check = () => idToEdit ? dispatch(transactionStartEditting(transaction)) : dispatch(transactionStartAdding(transaction))
 
   return (
     <Topbar>
-      <Icon className='icon-close' onClick={() => dispatch(transactionClear())} />
+      <Icon className='icon-close' onClick={_clear} />
       <Para>{idToEdit ? 'Edit' : 'New'} Transaction</Para>
-      <Icon className='icon-check' onClick={() => idToEdit ? dispatch(transactionStartEditting(transaction)) : dispatch(transactionStartAdding(transaction))} />
+      <Icon className='icon-check' onClick={_check} />
     </Topbar>
   )
 }
