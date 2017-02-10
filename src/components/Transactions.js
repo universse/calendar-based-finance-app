@@ -7,7 +7,18 @@ import Ul from 'Ul'
 
 const Wrapper = styled.div`
   height: 1000px;
+  margin: 0 auto;
+  max-width: 26rem;
   overflow: hidden;
+
+  @media screen and (min-width: 48rem) {
+    background: #f44336;
+    color: #fff;
+    flex-basis: calc(100vw - 25rem);
+    height: 50%;
+    margin-left: 10px;
+    max-width: 30rem;
+  }
 `
 
 const TransactionList = styled(Ul)`

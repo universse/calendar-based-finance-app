@@ -21,12 +21,12 @@ const DateWrapper = styled.span`
   cursor: pointer;
   display: flex;
   font-size: 14px;
-  height: 3.2em;
+  height: 3.1em;
   justify-content: center;
-  width: 3.2em;
+  width: 3.1em;
 
-  @media screen and (min-width: 416px) {
-    font-size: 16px;
+  @media screen and (min-width: 26rem) {
+    font-size: 18px;
   }
 `
 

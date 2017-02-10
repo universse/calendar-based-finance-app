@@ -12,6 +12,10 @@ const DateUl = styled(Ul)`
   border-top: 1px solid #eee;
   flex-wrap: wrap;
   border-bottom: 1px solid #ccc;
+
+  @media screen and (min-width: 48rem) {
+    border-bottom: none;
+  }
 `
 
 let CalendarDates = ({dates, dispatch}) => {

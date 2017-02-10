@@ -1,19 +1,19 @@
 import React from 'react'
-
 import styled from 'styled-components'
 
 import {Calendar} from 'Calendar'
 import Transactions from 'Transactions'
+import Main from 'Main'
 
-export const Main = styled.main`
-  background: #fefefe;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+const Wrapper = styled(Main)`
+  @media screen and (min-width: 48rem) {
+    flex-direction: row;
+    margin-top: 2rem;
+  }
 `
 
 export let AppHome = props =>
-  <Main>
+  <Wrapper>
     <Calendar />
     <Transactions />
-  </Main>
+  </Wrapper>

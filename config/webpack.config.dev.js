@@ -25,7 +25,7 @@ module.exports = {
       template: paths.html
     }),
     new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'async'
+      defaultAttribute: 'defer'
     }),
     new webpack.DefinePlugin({
       'process.env': {

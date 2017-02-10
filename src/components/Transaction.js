@@ -13,6 +13,11 @@ const TransactionLi = styled.li`
   display: flex;
   height: 48px;
   width: 100%;
+
+  @media screen and (min-width: 48rem) {
+    border-bottom: none;
+    height: 64px;
+  }
 `
 
 const Icon = styled.i`

@@ -37,7 +37,7 @@ module.exports = {
       }
     }),
     new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'async'
+      defaultAttribute: 'defer'
     }),
     new webpack.DefinePlugin({
       'process.env': {

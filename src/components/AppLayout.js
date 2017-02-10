@@ -8,7 +8,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  max-width: 26rem;
   max-height: 100vh;
   width: 100%;
 `

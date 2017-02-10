@@ -11,6 +11,13 @@ const MonthUl = styled(Ul)`
   color: #fff;
   height: 64px;
   justify-content: space-between;
+
+  @media screen and (min-width: 48rem) {
+    background: #fefefe;
+    color: #000;
+    height: 10rem;
+    opacity: .9;
+  }
 `
 
 const MonthLi = styled.li`
@@ -21,6 +28,15 @@ const MonthLi = styled.li`
   &:nth-child(2) {
     cursor: default;
     font-size: 1.2rem;
+
+    @media screen and (min-width: 48rem) {
+      font-size: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 48rem) {
+    padding-bottom: 3em;
+    padding-top: 3em;
   }
 `
 
