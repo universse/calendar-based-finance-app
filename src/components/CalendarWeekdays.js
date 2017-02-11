@@ -10,7 +10,7 @@ const WeekdayUl = styled(Ul)`
 
 const WeekdayLi = styled.li`
   font-size: .8rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.8em 0;
   text-align: center;
   width: calc(100% / 7);

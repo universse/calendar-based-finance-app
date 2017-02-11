@@ -9,11 +9,11 @@ import CalendarDate from 'CalendarDate'
 import Ul from 'Ul'
 
 const DateUl = styled(Ul)`
+  border-bottom: 1px solid #ccc;
   border-top: 1px solid #eee;
   flex-wrap: wrap;
-  border-bottom: 1px solid #ccc;
 
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: 768px) {
     border-bottom: none;
   }
 `

@@ -2,18 +2,25 @@ import React from 'react'
 import styled from 'styled-components'
 
 import {Calendar} from 'Calendar'
-import Transactions from 'Transactions'
-import Main from 'Main'
+import TransactionPanel from 'TransactionPanel'
 
-const Wrapper = styled(Main)`
-  @media screen and (min-width: 48rem) {
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+
+
+  @media screen and (max-width: 767px)) {
+    height: calc(100vh - 48px);
+  }
+
+  @media screen and (min-width: 768px) {
     flex-direction: row;
     margin-top: 2rem;
   }
 `
 
 export let AppHome = props =>
-  <Wrapper>
+  <Main>
     <Calendar />
-    <Transactions />
-  </Wrapper>
+    <TransactionPanel />
+  </Main>

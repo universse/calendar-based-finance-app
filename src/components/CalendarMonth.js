@@ -12,7 +12,7 @@ const MonthUl = styled(Ul)`
   height: 64px;
   justify-content: space-between;
 
-  @media screen and (min-width: 48rem) {
+  @media screen and (min-width: 768px) {
     background: #fefefe;
     color: #000;
     height: 10rem;
