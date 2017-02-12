@@ -6,8 +6,14 @@ import styled from 'styled-components'
 import {startLogout} from 'actions'
 
 const Nav = styled.nav`
-  background: #f44336;
+  background-color: #f44336;
   width: 100%;
+  margin: 0 auto;
+  max-width: 26rem;
+
+  @media screen and (min-width: 768px) {
+    max-width: none;
+  }
 `
 
 const NavLink = styled(Link)`
@@ -22,7 +28,7 @@ const NavLink = styled(Link)`
   width: 25%;
 
   &.active {
-    background: #D32F2F;
+    background-color: #D32F2F;
   }
 `
 

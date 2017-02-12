@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import TransactionPanelDate from 'TransactionPanelDate'
+import TransactionPanelDateContainer from 'TransactionPanelDateContainer'
 import Transactions from 'Transactions'
 
 const Wrapper = styled.div`
@@ -12,12 +12,14 @@ const Wrapper = styled.div`
   overflow: hidden;
 
   @media screen and (min-width: 768px) {
-    background: #f44336;
+    background-color: #f44336;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
     color: #fff;
     flex-basis: calc(100vw - 25rem);
     flex-direction: column;
     margin-left: 0;
-    height: 540px;
+    height: 580px;
     max-width: 30rem;
   }
 `
@@ -25,7 +27,7 @@ const Wrapper = styled.div`
 let TransactionPanel = () => {
   return (
     <Wrapper>
-      <TransactionPanelDate />
+      <TransactionPanelDateContainer />
       <Transactions />
     </Wrapper>
   )

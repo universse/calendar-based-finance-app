@@ -23,6 +23,16 @@ const currentDate = (state = new Date(), action) => {
   }
 }
 
+const weekview = (state = false, action) => {
+  switch (action.type) {
+    case 'TOGGLE_WEEKVIEW':
+      return !state
+
+    default:
+      return state
+  }
+}
+
 const transactionIdEdit = (state = false, action) => {
   switch (action.type) {
     case 'SWITCH_EDIT_STATE':
@@ -136,6 +146,7 @@ const user = (state = '', action) => {
 
 const reducer = combineReducers({
   currentDate,
+  weekview,
   transactionIdEdit,
   newTransactionCategory,
   newTransactionNote,

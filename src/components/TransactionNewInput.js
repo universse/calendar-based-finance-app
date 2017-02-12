@@ -11,7 +11,7 @@ const TransactionInput = styled.div`
 `
 
 const Button = styled.button`
-  background: none;
+  background-color: none;
   border: 0;
   border-bottom: 1px solid #ddd;
   font-size: 18px;
@@ -20,7 +20,7 @@ const Button = styled.button`
   width: calc(100% /3);
 
   &:active {
-    background: #ddd;
+    background-color: #ddd;
   }
 
   &:nth-child(3n + 2) {

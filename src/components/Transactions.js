@@ -6,8 +6,13 @@ import Transaction from 'Transaction'
 import Ul from 'Ul'
 
 const TransactionList = styled(Ul)`
+  border-top: 1px solid rgba(255, 255, 255, .5);
   margin-right: -20px;
   overflow-y: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 2rem;
+  }
 `
 
 let Transactions = ({transactions = []}) =>

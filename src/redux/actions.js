@@ -14,6 +14,10 @@ export const selectDate = date => ({
   date
 })
 
+export const weekviewToggle = () => ({
+  type: 'TOGGLE_WEEKVIEW'
+})
+
 const editStateSet = id => ({
   type: 'SWITCH_EDIT_STATE',
   id

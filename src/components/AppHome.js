@@ -9,13 +9,13 @@ const Main = styled.main`
   flex-direction: column;
 
 
-  @media screen and (max-width: 767px)) {
+  @media screen and (max-width: 767px) {
     height: calc(100vh - 48px);
   }
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
-    margin-top: 2rem;
+    margin-top: calc(50vh - 320px);
   }
 `
 

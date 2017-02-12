@@ -20,12 +20,14 @@ const DateUl = styled(Ul)`
 
 let CalendarDates = ({dates, dispatch}) => {
   let _setCurrentDate = e => {
-    console.log(e.target)
-    let ul = e.currentTarget
-    let index = Array.prototype.indexOf.call(ul.children, e.target.parentElement)
+    let target = e.target
+    if (target.tagName === 'SPAN') {
+      let ul = e.currentTarget
+      let index = Array.prototype.indexOf.call(ul.children, target.parentElement)
 
-    dispatch(selectDate(dates[index].date))
-    dispatch(transactionsFetch())
+      dispatch(selectDate(dates[index].date))
+      dispatch(transactionsFetch())
+    }
   }
 
   return (

@@ -5,7 +5,7 @@ import Ul from 'Ul'
 
 const WeekdayUl = styled(Ul)`
   flex-wrap: wrap;
-  opacity: .6;
+  opacity: .8;
 `
 
 const WeekdayLi = styled.li`
