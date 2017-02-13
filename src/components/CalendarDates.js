@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 
 import styled from 'styled-components'
 
-import {selectDate, transactionsFetch} from 'actions'
+import {selectDate} from 'actions'
 import CalendarDate from 'CalendarDate'
 
 import Ul from 'Ul'
@@ -26,7 +26,6 @@ let CalendarDates = ({dates, dispatch}) => {
       let index = Array.prototype.indexOf.call(ul.children, target.parentElement)
 
       dispatch(selectDate(dates[index].date))
-      dispatch(transactionsFetch())
     }
   }
 

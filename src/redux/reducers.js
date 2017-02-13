@@ -112,6 +112,9 @@ const transactionList = (state = {}, action) => {
       dailyListObj[date] = dailyList
       return Object.assign({}, state, dailyListObj)
 
+    case 'UPDATE_TRANSACTIONS':
+      return Object.assign({}, state, action.transactions)
+
     case 'EDIT_TRANSACTION':
       let updatedDailyList = state[date].map(transaction => {
         if (transaction.id === action.transaction.id) {

@@ -6,10 +6,10 @@ import Transactions from 'Transactions'
 
 const Wrapper = styled.div`
   display: flex;
-  height: 1000px;
   margin: 0 auto;
   max-width: 26rem;
   overflow: hidden;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     background-color: #f44336;
@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     flex-basis: calc(100vw - 25rem);
     flex-direction: column;
     margin-left: 0;
-    height: 580px;
+    height: 570px;
     max-width: 30rem;
   }
 `

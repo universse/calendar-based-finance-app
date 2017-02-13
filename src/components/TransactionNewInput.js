@@ -7,11 +7,13 @@ import {transactionValueInput} from 'actions'
 const TransactionInput = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 26rem;
   width: 100%;
 `
 
 const Button = styled.button`
-  background-color: none;
+  background: none;
   border: 0;
   border-bottom: 1px solid #ddd;
   font-size: 18px;
@@ -31,8 +33,10 @@ const Button = styled.button`
 
 let TransactionNewInput = ({dispatch}) => {
   let buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', <i className='icon-backspace' />]
+  let _inputValue = e => dispatch(transactionValueInput(e.target.innerHTML))
+
   return (
-    <TransactionInput onClick={e => dispatch(transactionValueInput(e.target.innerHTML))}>
+    <TransactionInput onClick={_inputValue}>
       {buttons.map((button, i) => <Button key={i}>{button}</Button>)}
     </TransactionInput>
   )

@@ -3,22 +3,35 @@ import {connect} from 'react-redux'
 import styled from 'styled-components'
 
 import Transaction from 'Transaction'
+import {transactionsFetch} from 'actions'
 import Ul from 'Ul'
 
 const TransactionList = styled(Ul)`
   border-top: 1px solid rgba(255, 255, 255, .5);
   margin-right: -20px;
   overflow-y: auto;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 2rem;
-  }
+  width: calc(100% + 20px);
 `
 
-let Transactions = ({transactions = []}) =>
-  <TransactionList>
-    {transactions.map(transaction => <Transaction key={transaction.id} {...transaction} />)}
-  </TransactionList>
+class Transactions extends React.Component {
+  render () {
+    let transactions = this.props.transactions || []
+
+    return (
+      <TransactionList>
+        {transactions.map(transaction => <Transaction key={transaction.id} {...transaction} />)}
+      </TransactionList>
+    )
+  }
+
+  componentDidMount () {
+    this._timer = setInterval(() => this.props.dispatch(transactionsFetch()), 10000)
+  }
+
+  componentWillUnmount () {
+    clearInterval(this._timer)
+  }
+}
 
 export default connect(
   state => ({

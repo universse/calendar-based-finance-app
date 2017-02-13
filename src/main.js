@@ -6,28 +6,33 @@ import {AppContainer} from 'react-hot-loader'
 import 'normalize.css'
 
 import {App} from 'App'
-import {logIn, logOut, selectDate, transactionsFetch} from 'actions'
+import {logIn, logOut, selectDate, transactionsFetch, weekviewToggle} from 'actions'
 import firebase from './firebase'
 import configureStore from 'store'
 import 'globalStyle'
 
 const store = configureStore()
 const history = syncHistoryWithStore(browserHistory, store)
+const dispatch = store.dispatch
 
 if (!firebase.auth().currentUser) {
-  store.dispatch(push(''))
+  dispatch(push(''))
 }
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    store.dispatch(logIn(user.uid))
-    store.dispatch(push('app'))
-    store.dispatch(selectDate(new Date()))
-    store.dispatch(transactionsFetch())
+    dispatch(logIn(user.uid))
+    dispatch(push('app'))
+    dispatch(selectDate(new Date()))
+    dispatch(transactionsFetch())
   } else {
-    store.dispatch(logOut())
-    store.dispatch(push(''))
+    dispatch(logOut())
+    dispatch(push(''))
   }
+})
+
+window.addEventListener('resize', () => {
+  window.innerWidth >= 768 && store.getState().weekview && dispatch(weekviewToggle())
 })
 
 render(

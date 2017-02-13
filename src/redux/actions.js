@@ -69,6 +69,11 @@ const transactionAdd = (transaction, date) => ({
   date
 })
 
+const transactionListUpdate = (transactions, date) => ({
+  type: 'UPDATE_TRANSACTIONS',
+  transactions
+})
+
 const transactionEdit = (transaction, date) => ({
   type: 'EDIT_TRANSACTION',
   transaction,
@@ -109,16 +114,21 @@ export const transactionStartEditting = transaction => (dispatch, getState) => {
 
 export const transactionsFetch = () => (dispatch, getState) => {
   let uid = getState().user
-  let date = getState().currentDate.toDateString()
   let transactionList = getState().transactionList
 
   firebaseRef.child(uid).once('value').then(snapshot => {
-    if (snapshot.val() && snapshot.val().hasOwnProperty(date)) {
-      let savedDailyList = snapshot.val()[date]
-      let formattedList = Object.keys(savedDailyList).map(id => ({id, ...savedDailyList[id]}))
-      if (!transactionList[date]) {
-        dispatch(transactionAdd(formattedList, date))
-      }
+    let allTransactions = snapshot.val()
+    if (allTransactions) {
+      Object.keys(allTransactions).map(date => {
+        let savedDailyList = snapshot.val()[date]
+        let formattedList = Object.keys(savedDailyList).map(id => ({id, ...savedDailyList[id]}))
+
+        if (!transactionList[date]) {
+          dispatch(transactionAdd(formattedList, date))
+        } else {
+          dispatch(transactionListUpdate({[date]: formattedList}))
+        }
+      })
     }
   })
 }

@@ -4,15 +4,20 @@ import styled from 'styled-components'
 import TransactionNewCategoryIcon from 'TransactionNewCategoryIcon'
 
 const Categories = styled.div`
-  align-items: center;
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #eee;
+  box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0 auto;
+  max-width: 26rem;
   padding: 1rem 0;
+  width: 100%;
 `
 
 const Para = styled.div`
+  box-sizing: border-box;
   font-size: .9rem;
   margin: 0;
   margin-bottom: .65rem;
@@ -22,6 +27,7 @@ const Para = styled.div`
 
 const CategoryIcons = styled.div`
   align-items: center;
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   padding: 0 12px;

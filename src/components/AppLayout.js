@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 let AppLayout = ({children, location}) =>
   <Wrapper>
     {children}
-    {location === 'app' && <AppNav />}
+    {location !== '/' && <AppNav />}
   </Wrapper>
 
 export default connect(

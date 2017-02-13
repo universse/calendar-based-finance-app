@@ -2,11 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  display: flex;
+  display: none;
   margin: 2rem 0;
+  flex-shrink: 0;
 
-  @media screen and (max-width: 768px) {
-    display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
   }
 `
 
@@ -40,7 +41,7 @@ const Weekday = styled.p`
 
 let TransactionPanelDate = ({weekday, month, date}) =>
   <Wrapper>
-    <Date>{date}</Date>
+    <Date>{date < 10 ? '0' + date : date}</Date>
     <MonthAndWeekday>
       <Month>{month}</Month>
       <Weekday>{weekday}</Weekday>

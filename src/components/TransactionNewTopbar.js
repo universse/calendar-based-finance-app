@@ -11,6 +11,9 @@ const Topbar = styled.div`
   display: flex;
   height: 64px;
   justify-content: space-between;
+  margin: 0 auto;
+  max-width: 26rem;
+  width: 100%;
 `
 
 const Icon = styled.i`
@@ -23,9 +26,13 @@ const Para = styled.p`
 `
 
 let TransactionNewTopbar = ({idToEdit, category, note, value, dispatch}) => {
-  let transaction = {category, note, value}
   let _clear = () => dispatch(transactionClear())
-  let _check = () => idToEdit ? dispatch(transactionStartEditting(transaction)) : dispatch(transactionStartAdding(transaction))
+  let _check = () => {
+    if (value !== '0') {
+      let transaction = {category, note, value}
+      return idToEdit ? dispatch(transactionStartEditting(transaction)) : dispatch(transactionStartAdding(transaction))
+    }
+  }
 
   return (
     <Topbar>

@@ -26,18 +26,22 @@ const Icon = styled.i`
 `
 
 const Note = styled.span`
-  flex-basis: 55%;
+  flex-grow: 1;
   font-size: 1rem;
   line-height: 36px;
   text-align: left;
 `
 
 const Value = styled.span`
-  flex-basis: 20%;
+  flex-basis: content;
   font-size: 1rem;
   line-height: 36px;
   padding-right: 2em;
   text-align: right;
+
+  @media screen and (min-width: 768px) {
+    padding-right: 4em;
+  }
 `
 
 let Transaction = ({id, category, note, value, dispatch}) => {
