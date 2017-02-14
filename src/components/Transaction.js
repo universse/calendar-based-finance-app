@@ -53,7 +53,7 @@ let Transaction = ({id, category, note, value, dispatch}) => {
   return (
     <TransactionLi onClick={_editTransaction}>
       <Icon className={`fa fa-${category} fa-2x`} />
-      <Note>Housing</Note>
+      <Note>{note}</Note>
       <Value className='value'>${value}</Value>
     </TransactionLi>
   )

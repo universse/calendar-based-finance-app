@@ -19,6 +19,7 @@ const Button = styled.button`
   font-size: 18px;
   outline: none;
   padding: 14px;
+  cursor: pointer;
   width: calc(100% /3);
 
   &:active {

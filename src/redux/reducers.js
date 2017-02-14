@@ -59,6 +59,12 @@ const newTransactionCategory = (state = '', action) => {
 
 const newTransactionNote = (state = '', action) => {
   switch (action.type) {
+    case 'INPUT_NOTE':
+      return action.note
+
+    case 'CANCEL_NOTE':
+      return action.currentNote
+
     case 'CLEAR_NOTE':
     case 'LOG_OUT':
       return ''

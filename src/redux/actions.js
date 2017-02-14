@@ -50,6 +50,11 @@ export const transactionNoteInput = note => ({
   note
 })
 
+export const transactionNoteCancel = currentNote => ({
+  type: 'CANCEL_NOTE',
+  currentNote
+})
+
 const transactionNoteClear = () => ({
   type: 'CLEAR_NOTE'
 })

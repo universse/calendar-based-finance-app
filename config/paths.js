@@ -16,6 +16,7 @@ module.exports = {
   api: resolvePath('src/api'),
   components: resolvePath('src/components'),
   firebase: resolvePath('src/firebase'),
+  icons: resolvePath('src/icons'),
   redux: resolvePath('src/redux'),
   styledComponents: resolvePath('src/styled-components'),
   mainJs: resolvePath('src/main.js'),

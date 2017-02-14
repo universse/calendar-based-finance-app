@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import CalendarDates from 'CalendarDates'
-import {generateDateList} from '../helpers/dateListHelpers'
+import {generateDateList} from '../helpers'
 
 let CalendarDatesContainer = ({currentDate, weekview}) => {
   let dates = generateDateList(currentDate)

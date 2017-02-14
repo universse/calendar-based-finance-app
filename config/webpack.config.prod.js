@@ -126,8 +126,15 @@ module.exports = {
         }
       },
       {
-        test: /\.(eot|svg|ttf|woff(2)?)(\?v=\d+\.\d+\.\d+)?/,
-        loader: 'url-loader'
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'svg-react-loader'
+          }
+        ]
       }
     ]
   },
@@ -137,6 +144,7 @@ module.exports = {
       paths.api,
       paths.components,
       paths.firebase,
+      paths.icons,
       paths.redux,
       paths.styledComponents
     ],
