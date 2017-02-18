@@ -7,15 +7,12 @@ import TransactionPanel from 'TransactionPanel'
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-
-
-  @media screen and (max-width: 767px) {
-    height: calc(100vh - 48px);
-  }
+  height: calc(100vh - 56px);
 
   @media screen and (min-width: 768px) {
+    align-items: center;
     flex-direction: row;
-    margin-top: calc(50vh - 320px);
+    justify-content: center;
   }
 `
 

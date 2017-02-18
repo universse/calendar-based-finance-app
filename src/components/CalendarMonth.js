@@ -4,16 +4,19 @@ import styled from 'styled-components'
 
 import {prevMonth, nextMonth} from 'actions'
 import Ul from 'Ul'
+import {backgroundColor} from 'variables'
 
 const MonthUl = styled(Ul)`
   align-items: center;
-  background: #f44336;
+  background-color: ${backgroundColor};
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
   color: #fff;
   height: 64px;
   justify-content: space-between;
 
   @media screen and (min-width: 768px) {
     background: #fefefe;
+    box-shadow: none;
     color: #000;
     height: 8rem;
     opacity: .9;

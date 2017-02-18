@@ -4,12 +4,17 @@ import {connect} from 'react-redux'
 import styled from 'styled-components'
 
 import {transactionClear, startLogout} from 'actions'
+import {backgroundColor} from 'variables'
 
 const Nav = styled.nav`
-  background-color: #f44336;
-  width: 100%;
+  background-color: #fafafa;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, .16), 0px 1px 4px rgba(0, 0, 0, .23);
+  display: flex;
+  height: 56px;
+  justify-content: center;
   margin: 0 auto;
   max-width: 26rem;
+  width: 100%;
 
   @media screen and (min-width: 768px) {
     max-width: none;
@@ -18,17 +23,17 @@ const Nav = styled.nav`
 
 const NavLink = styled(Link)`
   align-items: center;
-  color: white;
+  color: rgba(0, 0, 0, .6);
   display: inline-flex;
   font-size: 12px;
-  height: 56px;
   justify-content: center;
   text-align: center;
   text-decoration: none;
   width: 25%;
+  max-width: 168px;
 
   &.active {
-    background-color: #D32F2F;
+    color: ${backgroundColor};
   }
 
   &:focus {

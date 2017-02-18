@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import styled from 'styled-components'
 
 import {transactionNoteInput, transactionNoteCancel} from 'actions'
+import {backgroundColor} from 'variables'
 
 Modal.setAppElement('#root')
 
@@ -26,7 +27,7 @@ const ModalTitle = styled.h3`
 
 const Input = styled.input`
   border: none;
-  border-bottom: 2px solid #ef5350;
+  border-bottom: 2px solid #005cf2;
   display: block;
   font-family: 'Roboto', sans-serif;
   margin: 0 auto;
@@ -47,7 +48,7 @@ const ModalButtonWrapper = styled.div`
 const ModalButton = styled.button`
   background: none;
   border: none;
-  color: #f44336;
+  color: ${backgroundColor};
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -63,8 +64,7 @@ class TransactionNewNote extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      showModal: false,
-      currentNote: ''
+      showModal: false
     }
     this._openModal = this._openModal.bind(this)
     this._inputNote = this._inputNote.bind(this)
@@ -73,6 +73,7 @@ class TransactionNewNote extends React.Component {
   }
 
   _openModal () {
+    this._currentNote = this.props.newTransactionNote
     this.setState({showModal: true})
   }
 
@@ -85,7 +86,7 @@ class TransactionNewNote extends React.Component {
   }
 
   _cancelNote () {
-    this.props.dispatch(transactionNoteCancel(this.state.currentNote))
+    this.props.dispatch(transactionNoteCancel(this._currentNote))
     this._closeModal()
   }
 
@@ -113,10 +114,6 @@ class TransactionNewNote extends React.Component {
         </Modal>
       </Wrapper>
     )
-  }
-
-  componentDidMount () {
-    this.setState({currentNote: this.props.newTransactionNote})
   }
 }
 

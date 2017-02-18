@@ -9,7 +9,6 @@ import CalendarDate from 'CalendarDate'
 import Ul from 'Ul'
 
 const DateUl = styled(Ul)`
-  border-bottom: 1px solid #ccc;
   border-top: 1px solid #eee;
   flex-wrap: wrap;
 

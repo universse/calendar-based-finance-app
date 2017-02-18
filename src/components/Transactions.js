@@ -7,10 +7,16 @@ import {transactionsFetch} from 'actions'
 import Ul from 'Ul'
 
 const TransactionList = styled(Ul)`
-  border-top: 1px solid rgba(255, 255, 255, .5);
+  background-color: #fefefe;
+  color: rgba(0, 0, 0, .75);
   margin-right: -20px;
   overflow-y: auto;
   width: calc(100% + 20px);
+
+  @media screen and (min-width: 768px) {
+    background-color: inherit;
+    color: rgba(255, 255, 255, .95);
+  }
 `
 
 class Transactions extends React.Component {

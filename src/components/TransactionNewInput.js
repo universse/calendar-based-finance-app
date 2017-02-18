@@ -15,7 +15,8 @@ const TransactionInput = styled.div`
 const Button = styled.button`
   background: none;
   border: 0;
-  border-bottom: 1px solid #ddd;
+  ${({border}) => border && 'border-bottom: 1px solid #ddd'};
+  color: rgba(0, 0, 0, .7);
   font-size: 18px;
   outline: none;
   padding: 14px;
@@ -38,7 +39,7 @@ let TransactionNewInput = ({dispatch}) => {
 
   return (
     <TransactionInput onClick={_inputValue}>
-      {buttons.map((button, i) => <Button key={i}>{button}</Button>)}
+      {buttons.map((button, i) => <Button key={i} border={i < 9}>{button}</Button>)}
     </TransactionInput>
   )
 }

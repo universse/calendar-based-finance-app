@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import TransactionPanelDateContainer from 'TransactionPanelDateContainer'
 import Transactions from 'Transactions'
+import {backgroundColor} from 'variables'
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,13 +13,12 @@ const Wrapper = styled.div`
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    background-color: #f44336;
-    border-bottom-right-radius: 15px;
-    border-top-right-radius: 15px;
+    background-color: ${backgroundColor};
+    box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .25);
     color: #fff;
     flex-basis: calc(100vw - 25rem);
     flex-direction: column;
-    margin-left: 0;
+    margin: 0;
     height: 570px;
     max-width: 30rem;
   }

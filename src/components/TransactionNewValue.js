@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const Value = styled.div`
   box-sizing: border-box;
+  color: rgba(0, 0, 0, .65);
   font-size: 2rem;
   margin: 0 auto;
   max-width: 26rem;

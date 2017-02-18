@@ -8,11 +8,14 @@ import {editStateStartSetting} from 'actions'
 
 const TransactionLi = styled.li`
   align-items: center;
-  border-bottom: 1px solid #eee;
   cursor: pointer;
   display: flex;
   height: 48px;
   width: 100%;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid #eee;
+  }
 
   @media screen and (min-width: 48rem) {
     border-bottom: none;

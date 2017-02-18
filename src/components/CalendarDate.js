@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
 import styled from 'styled-components'
+
+import {backgroundColor} from 'variables'
 
 const DateLi = styled.li`
   display: flex;
@@ -13,13 +14,13 @@ const DateLi = styled.li`
 
 const DateWrapper = styled.span`
   align-items: center;
-  background-color: ${({selected}) => selected ? '#f44336' : '#fefefe'};
+  background-color: ${({selected}) => selected ? backgroundColor : '#fefefe'};
   border-radius: 50%;
-  color: ${({selected, today}) => (selected && '#fff') || (today && '#ff5252') || '#000'};
+  color: ${({selected, today}) => (selected && '#fff') || (today && backgroundColor) || '#000'};
   cursor: pointer;
   display: flex;
   font-size: 14px;
-  font-weight: ${({selected, today}) => today && !selected && 700};
+  ${({selected, today}) => today && !selected && 'font-weight: 700'};
   height: 3.1em;
   justify-content: center;
   opacity: ${({currentMonth, selected, today}) => ((selected || today) && 0.95) || (currentMonth && 0.55) || 0.1};

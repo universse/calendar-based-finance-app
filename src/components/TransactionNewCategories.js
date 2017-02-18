@@ -18,6 +18,7 @@ const Categories = styled.div`
 
 const Para = styled.div`
   box-sizing: border-box;
+  color: rgba(0, 0, 0, .75);
   font-size: .9rem;
   margin: 0;
   margin-bottom: .65rem;

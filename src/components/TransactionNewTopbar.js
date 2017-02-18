@@ -3,10 +3,12 @@ import {connect} from 'react-redux'
 import styled from 'styled-components'
 
 import {transactionClear, transactionStartAdding, transactionStartEditting} from 'actions'
+import {backgroundColor} from 'variables'
 
 const Topbar = styled.div`
   align-items: center;
-  background-color: #f44336;
+  background-color: ${backgroundColor};
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .16), 0 3px 6px rgba(0, 0, 0, .23);
   color: #fff;
   display: flex;
   height: 64px;

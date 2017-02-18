@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import {weekviewToggle} from 'actions'
 
 const Wrapper = styled.div`
+  box-shadow: 0 4px 4px 0px rgba(0, 0, 0, .12), 0 4px 4px -5px rgba(0, 0, 0, .24);
   color: #000;
   opacity: .8;
   text-align: center;
-  border-bottom: 1px solid #000;
   @media screen and (min-width: 768px) {
     display: none;
   }

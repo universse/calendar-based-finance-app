@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import AppNav from 'AppNav'
 
 const Wrapper = styled.div`
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
